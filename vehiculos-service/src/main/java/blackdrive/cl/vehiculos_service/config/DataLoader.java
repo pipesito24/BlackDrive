@@ -16,18 +16,18 @@ public class DataLoader implements CommandLineRunner {
     public void run(String... args) throws Exception {
         if (vehiculosRepository.count() == 0) {
             VehiculosModel v1 = new VehiculosModel();
-            v1.setMarca("Toyota");
-            v1.setModelo("Corolla");
+            v1.setMarca("Mercedes");
+            v1.setModelo("Clase A");
             v1.setAno(2022);
-            v1.setPrecio(150000000);
+            v1.setPrecio(39000000);
             v1.setClienteId(1L);
             vehiculosRepository.save(v1);
 
             VehiculosModel v2 = new VehiculosModel();
-            v2.setMarca("Honda");
-            v2.setModelo("Civic");
+            v2.setMarca("Aston Martin");
+            v2.setModelo("Vanquish");
             v2.setAno(2021);
-            v2.setPrecio(135000000);
+            v2.setPrecio(95000000);
             v2.setClienteId(2L);
             vehiculosRepository.save(v2);
 

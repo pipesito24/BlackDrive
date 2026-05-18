@@ -16,18 +16,18 @@ public class DataLoader implements CommandLineRunner {
     public void run(String... args) throws Exception {
         if (inventarioRepository.count() == 0) {
             InventarioModel i1 = new InventarioModel();
-            i1.setNombreProducto("Filtro de aceite Toyota");
+            i1.setNombreProducto("Filtro de aceite Mercedes");
             i1.setCategoria("Filtros");
             i1.setStock(15);
-            i1.setPrecioUnitario(12000);
+            i1.setPrecioUnitario(120000);
             i1.setVehiculoId(1L);
             inventarioRepository.save(i1);
 
             InventarioModel i2 = new InventarioModel();
-            i2.setNombreProducto("Pastillas de freno Honda");
+            i2.setNombreProducto("Pastillas de freno Aston Martin");
             i2.setCategoria("Frenos");
             i2.setStock(8);
-            i2.setPrecioUnitario(45000);
+            i2.setPrecioUnitario(450000);
             i2.setVehiculoId(2L);
             inventarioRepository.save(i2);
 

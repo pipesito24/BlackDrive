@@ -20,7 +20,7 @@ public class DataLoader implements CommandLineRunner {
             PedidosModel p1 = new PedidosModel();
             p1.setDescripcion("Cambio de aceite y filtro");
             p1.setCantidad(1);
-            p1.setPrecioUnitario(35000);
+            p1.setPrecioUnitario(350000);
             p1.setFechaPedido(LocalDate.of(2024, 3, 10));
             p1.setEstado("COMPLETADO");
             p1.setClienteId(1L);
@@ -29,7 +29,7 @@ public class DataLoader implements CommandLineRunner {
             PedidosModel p2 = new PedidosModel();
             p2.setDescripcion("Revisión de frenos");
             p2.setCantidad(1);
-            p2.setPrecioUnitario(75000);
+            p2.setPrecioUnitario(750000);
             p2.setFechaPedido(LocalDate.of(2024, 4, 5));
             p2.setEstado("PENDIENTE");
             p2.setClienteId(2L);
@@ -38,7 +38,7 @@ public class DataLoader implements CommandLineRunner {
             PedidosModel p3 = new PedidosModel();
             p3.setDescripcion("Alineación y balanceo");
             p3.setCantidad(1);
-            p3.setPrecioUnitario(50000);
+            p3.setPrecioUnitario(500000);
             p3.setFechaPedido(LocalDate.of(2024, 4, 15));
             p3.setEstado("EN_PROCESO");
             p3.setClienteId(3L);
