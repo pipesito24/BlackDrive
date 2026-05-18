@@ -4,7 +4,7 @@ Proyecto de arquitectura de microservicios desarrollado con Spring Boot y Spring
 
 ## Integrantes
 - Felipe Castillo
-- Sebastian
+- Sebastian Painemilla
   
 
 ## Tecnologías
