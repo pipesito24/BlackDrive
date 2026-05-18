@@ -1,0 +1,14 @@
+package blackdrive.cl.inventario_service.repository;
+
+import blackdrive.cl.inventario_service.model.InventarioModel;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
+
+@Repository
+public interface InventarioRepository extends JpaRepository<InventarioModel, Long> {
+    List<InventarioModel> findByCategoria(String categoria);
+    List<InventarioModel> findByStockLessThan(Integer stock);
+    List<InventarioModel> findByPrecioUnitarioBetween(Integer min, Integer max);
+}
