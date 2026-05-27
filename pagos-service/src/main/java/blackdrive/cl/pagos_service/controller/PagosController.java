@@ -5,6 +5,7 @@ import blackdrive.cl.pagos_service.model.PagosModel;
 import blackdrive.cl.pagos_service.service.PagosService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -30,7 +31,7 @@ public class PagosController {
     }
 
     @PostMapping
-    public ResponseEntity<String> save(@RequestBody PagosModel pago) {
+    public ResponseEntity<String> save(@Valid @RequestBody PagosModel pago) {
         pagosService.save(pago);
         return ResponseEntity.status(HttpStatus.CREATED).body("Pago agregado correctamente");
     }

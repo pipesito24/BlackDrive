@@ -6,6 +6,8 @@ import blackdrive.cl.pagos_service.dto.PagosDto;
 import blackdrive.cl.pagos_service.mapper.PagosMapper;
 import blackdrive.cl.pagos_service.model.PagosModel;
 import blackdrive.cl.pagos_service.repository.PagosRepository;
+import blackdrive.cl.pagos_service.exception.MontoInvalidoException;
+import blackdrive.cl.pagos_service.exception.PagoNoEncontradoException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,7 +55,7 @@ public class PagosService {
     public PagosModel save(PagosModel pago) {
         if (pago.getMonto() != null && pago.getMonto() <= 0) {
             log.error("Monto inválido: {}", pago.getMonto());
-            throw new IllegalArgumentException("El monto del pago debe ser mayor a cero");
+            throw new MontoInvalidoException(pago.getMonto());
         }
         log.info("Guardando pago de monto: {}", pago.getMonto());
         return pagosRepository.save(pago);

@@ -15,7 +15,7 @@ public class ClientesMapper {
         ClientesDto dto = new ClientesDto();
         dto.setId(cliente.getId());
         dto.setNombre(cliente.getNombre());
-        dto.setEmail(cliente.getEmail());
+        dto.setEmail(cliente.getCorreo());
         dto.setSueldo(cliente.getSueldo());
         return dto;
     }

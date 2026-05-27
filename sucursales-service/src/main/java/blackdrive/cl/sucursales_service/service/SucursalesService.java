@@ -8,6 +8,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import blackdrive.cl.sucursales_service.exception.SucursalNoEncontradaException;
+import blackdrive.cl.sucursales_service.exception.NombreSucursalInvalidoException;
 
 import java.util.List;
 
@@ -29,15 +31,15 @@ public class SucursalesService {
 
     public SucursalesDto findById(Long id) {
         log.info("Buscando sucursal con id: {}", id);
-        SucursalesModel sucursal = sucursalesRepository.findById(id).orElse(null);
-        if (sucursal == null) log.warn("Sucursal con id {} no encontrada", id);
+        SucursalesModel sucursal = sucursalesRepository.findById(id)
+                .orElseThrow(() -> new SucursalNoEncontradaException(id));
         return sucursalesMapper.toDTO(sucursal);
     }
 
     public SucursalesModel save(SucursalesModel sucursal) {
         if (sucursal.getNombre() == null || sucursal.getNombre().isBlank()) {
             log.error("Intento de guardar sucursal sin nombre");
-            throw new IllegalArgumentException("El nombre de la sucursal no puede estar vacío");
+            throw new NombreSucursalInvalidoException();
         }
         log.info("Guardando nueva sucursal: {}", sucursal.getNombre());
         return sucursalesRepository.save(sucursal);

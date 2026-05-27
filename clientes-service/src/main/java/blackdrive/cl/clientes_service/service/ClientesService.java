@@ -1,9 +1,11 @@
 package blackdrive.cl.clientes_service.service;
 
 import blackdrive.cl.clientes_service.dto.ClientesDto;
+import blackdrive.cl.clientes_service.exception.ClienteNoEncontradoException;
 import blackdrive.cl.clientes_service.mapper.ClientesMapper;
 import blackdrive.cl.clientes_service.model.ClientesModel;
 import blackdrive.cl.clientes_service.repository.ClientesRepository;
+import blackdrive.cl.clientes_service.exception.SueldoInvalidoException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,16 +30,20 @@ public class ClientesService {
     }
 
     public ClientesDto findById(Long id) {
+
         log.info("Buscando cliente con id: {}", id);
-        ClientesModel cliente = clientesRepository.findById(id).orElse(null);
-        if (cliente == null) log.warn("Cliente con id {} no encontrado", id);
+
+        ClientesModel cliente = clientesRepository.findById(id)
+                .orElseThrow(() ->
+                        new ClienteNoEncontradoException(id));
+
         return clientesMapper.toDTO(cliente);
     }
 
     public ClientesModel save(ClientesModel cliente) {
         if (cliente.getSueldo() != null && cliente.getSueldo() < 0) {
             log.error("Intento de guardar cliente con sueldo negativo: {}", cliente.getSueldo());
-            throw new IllegalArgumentException("El sueldo no puede ser negativo");
+            throw new SueldoInvalidoException(cliente.getSueldo());
         }
         log.info("Guardando nuevo cliente: {}", cliente.getNombre());
         return clientesRepository.save(cliente);

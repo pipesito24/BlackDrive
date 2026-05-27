@@ -3,13 +3,14 @@ package blackdrive.cl.vehiculos_service.controller;
 import blackdrive.cl.vehiculos_service.dto.VehiculosDto;
 import blackdrive.cl.vehiculos_service.model.VehiculosModel;
 import blackdrive.cl.vehiculos_service.service.VehiculosService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
+import jakarta.validation.Valid;
 @RestController
 @RequestMapping("/api/v6/vehiculos")
 public class VehiculosController {
@@ -30,7 +31,7 @@ public class VehiculosController {
     }
 
     @PostMapping
-    public ResponseEntity<String> save(@RequestBody VehiculosModel vehiculo) {
+    public ResponseEntity<String> save(@Valid @RequestBody VehiculosModel vehiculo) {
         vehiculosService.save(vehiculo);
         return ResponseEntity.status(HttpStatus.CREATED).body("Vehículo agregado correctamente");
     }
@@ -56,6 +57,13 @@ public class VehiculosController {
     @GetMapping("/precio/{min}/{max}")
     public ResponseEntity<List<VehiculosModel>> findByPrecio(@PathVariable Integer min, @PathVariable Integer max) {
         return ResponseEntity.ok(vehiculosService.findByPrecio(min, max));
+    }
+
+    @PostMapping
+    public ResponseEntity<VehiculosModel> guardar(
+            @Valid @RequestBody VehiculosModel vehiculoDto) {
+
+        return ResponseEntity.ok(vehiculosService.save(vehiculoDto));
     }
 
 }

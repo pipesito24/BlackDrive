@@ -3,6 +3,7 @@ package blackdrive.cl.clientes_service.controller;
 import blackdrive.cl.clientes_service.dto.ClientesDto;
 import blackdrive.cl.clientes_service.model.ClientesModel;
 import blackdrive.cl.clientes_service.service.ClientesService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -30,7 +31,7 @@ public class ClientesController {
     }
 
     @PostMapping
-    public ResponseEntity<String> save(@RequestBody ClientesModel cliente) {
+    public ResponseEntity<String> save(@Valid @RequestBody ClientesModel cliente) {
         clientesService.save(cliente);
         return ResponseEntity.status(HttpStatus.CREATED).body("Cliente agregado correctamente");
     }
@@ -56,4 +57,12 @@ public class ClientesController {
     public ResponseEntity<List<ClientesModel>> findByNombre(@PathVariable String nombre) {
         return ResponseEntity.ok(clientesService.findByNombre(nombre));
     }
+
+    @PostMapping
+    public ResponseEntity<ClientesModel> guardar(
+            @Valid @RequestBody ClientesModel cliente) {
+
+        return ResponseEntity.ok(clientesService.save(cliente));
+    }
+
 }

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import jakarta.validation.Valid;
 
 import java.util.List;
 
@@ -30,7 +31,7 @@ public class SucursalesController {
     }
 
     @PostMapping
-    public ResponseEntity<String> save(@RequestBody SucursalesModel sucursal) {
+    public ResponseEntity<String> save(@Valid @RequestBody SucursalesModel sucursal) {
         sucursalesService.save(sucursal);
         return ResponseEntity.status(HttpStatus.CREATED).body("Sucursal agregada correctamente");
     }
