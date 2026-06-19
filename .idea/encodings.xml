@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/api-gateway/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/clientes-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/config-server/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/eureka-server/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/facturas-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/financiamiento-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/inventario-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/pagos-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/pedidos-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/servicios-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/sucursales-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/vehiculos-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/vendedores-service/src/main/java" charset="UTF-8" />
+  </component>
+</project>
