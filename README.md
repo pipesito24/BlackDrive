@@ -2,9 +2,9 @@
 
 Proyecto de arquitectura de microservicios desarrollado con Spring Boot y Spring Cloud.
 
-## Integrantes
+## Integrante
 - Felipe Castillo
-- Sebastian Painemilla
+
   
 
 ## Tecnologías
@@ -15,6 +15,8 @@ Proyecto de arquitectura de microservicios desarrollado con Spring Boot y Spring
 - OpenFeign
 - MySQL
 - Flyway
+- Swagger
+- Docker
 
 ## Microservicios
 - clientes-service

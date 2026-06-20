@@ -1,6 +1,5 @@
 spring:
   application:
-    name: pagos-service
-
+    name: vehiculos-service
   config:
     import: ${SPRING_CONFIG_IMPORT:configserver:http://localhost:8888}
