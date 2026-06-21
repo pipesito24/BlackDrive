@@ -16,7 +16,15 @@ public class OpenApiConfig {
         gatewayServer.setUrl("http://localhost:8080");
         gatewayServer.setDescription("API Gateway");
 
+        Server clientesDirecto = new Server();
+        clientesDirecto.setUrl("http://localhost:8091");
+        clientesDirecto.setDescription("Clientes Service directo");
+
+        Server pagosDirecto = new Server();
+        pagosDirecto.setUrl("http://localhost:8092");
+        pagosDirecto.setDescription("Pagos Service directo");
+
         return new OpenAPI()
-                .servers(List.of(gatewayServer));
+                .servers(List.of(gatewayServer, clientesDirecto, pagosDirecto));
     }
 }
