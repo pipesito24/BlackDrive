@@ -43,11 +43,8 @@ public class PagosService {
 
     public PagosDto findById(Long id) {
         log.info("Buscando pago con id: {}", id);
-        PagosModel pago = pagosRepository.findById(id).orElse(null);
-        if (pago == null) {
-            log.warn("Pago con id {} no encontrado", id);
-            return null;
-        }
+        PagosModel pago = pagosRepository.findById(id)
+                .orElseThrow(() -> new PagoNoEncontradoException(id));
         ClientesDto cliente = buscarCliente(pago.getClienteId());
         return pagosMapper.toDTO(pago, cliente);
     }

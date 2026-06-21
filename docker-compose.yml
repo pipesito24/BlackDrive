@@ -43,6 +43,8 @@ services:
       context: ./clientes-service
       dockerfile: Dockerfile
     container_name: clientes-service
+    ports:
+      - "8091:8080"
     environment:
       SPRING_CONFIG_IMPORT: optional:configserver:http://config-server:8888
       EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eureka-server:8761/eureka/
@@ -63,6 +65,8 @@ services:
       context: ./pagos-service
       dockerfile: Dockerfile
     container_name: pagos-service
+    ports:
+      - "8092:8080"
     environment:
       SPRING_CONFIG_IMPORT: optional:configserver:http://config-server:8888
       EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eureka-server:8761/eureka/
