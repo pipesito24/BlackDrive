@@ -1,6 +1,7 @@
 package blackdrive.cl.clientes_service.controller;
 
 import blackdrive.cl.clientes_service.dto.ClientesDto;
+import blackdrive.cl.clientes_service.dto.RespuestaOperacion;
 import blackdrive.cl.clientes_service.model.ClientesModel;
 import blackdrive.cl.clientes_service.service.ClientesService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -97,9 +98,19 @@ public class ClientesController {
             )
     })
     @PostMapping
-    public ResponseEntity<String> save(@Valid @RequestBody ClientesModel cliente) {
+    public ResponseEntity<RespuestaOperacion> save(@Valid @RequestBody ClientesModel cliente) {
         clientesService.save(cliente);
-        return ResponseEntity.status(HttpStatus.CREATED).body("Cliente agregado correctamente");
+
+        RespuestaOperacion respuesta = new RespuestaOperacion(
+
+
+
+                "Cliente agregado correctamente",
+                "clientes-service",
+                "cliente"
+        );
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(respuesta);
     }
 
     @Operation(
@@ -117,9 +128,16 @@ public class ClientesController {
             )
     })
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> delete(@PathVariable Long id) {
+    public ResponseEntity<RespuestaOperacion> delete(@PathVariable Long id) {
         clientesService.delete(id);
-        return ResponseEntity.ok("Cliente eliminado correctamente");
+
+        RespuestaOperacion respuesta = new RespuestaOperacion(
+                "Cliente eliminado correctamente",
+                "clientes-service",
+                "cliente"
+        );
+
+        return ResponseEntity.ok(respuesta);
     }
 
     @Operation(

@@ -1,0 +1,31 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>blackdrive.cl</groupId>
+    <artifactId>blackdrive-master</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <name>BlackDrive Master</name>
+
+    <modules>
+        <module>eureka-server</module>
+        <module>config-server</module>
+        <module>api-gateway</module>
+
+        <module>clientes-service</module>
+        <module>vehiculos-service</module>
+        <module>pedidos-service</module>
+        <module>sucursales-service</module>
+        <module>vendedores-service</module>
+        <module>inventario-service</module>
+        <module>servicios-service</module>
+        <module>pagos-service</module>
+        <module>facturas-service</module>
+        <module>financiamiento-service</module>
+    </modules>
+
+</project>

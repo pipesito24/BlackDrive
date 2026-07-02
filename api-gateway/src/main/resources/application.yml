@@ -1,0 +1,102 @@
+spring:
+  application:
+    name: api-gateway
+
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: false
+      routes:
+        - id: clientes-service
+          uri: lb://clientes-service
+          predicates:
+            - Path=/api/v6/clientes/**
+
+        - id: vehiculos-service
+          uri: lb://vehiculos-service
+          predicates:
+            - Path=/api/v6/vehiculos/**
+
+        - id: sucursales-service
+          uri: lb://sucursales-service
+          predicates:
+            - Path=/api/v6/sucursales/**
+
+        - id: vendedores-service
+          uri: lb://vendedores-service
+          predicates:
+            - Path=/api/v6/vendedores/**
+
+        - id: pagos-service
+          uri: lb://pagos-service
+          predicates:
+            - Path=/api/v6/pagos/**
+
+        - id: financiamiento-service
+          uri: lb://financiamiento-service
+          predicates:
+            - Path=/api/v6/financiamiento/**
+
+        - id: pedidos-service
+          uri: lb://pedidos-service
+          predicates:
+            - Path=/api/v6/pedidos/**
+
+        - id: inventario-service
+          uri: lb://inventario-service
+          predicates:
+            - Path=/api/v6/inventario/**
+
+        - id: servicios-service
+          uri: lb://servicios-service
+          predicates:
+            - Path=/api/v6/servicios/**
+
+        - id: facturas-service
+          uri: lb://facturas-service
+          predicates:
+            - Path=/api/v6/facturas/**
+
+        - id: clientes-service-openapi
+          uri: lb://clientes-service
+          predicates:
+            - Path=/clientes-service/v3/api-docs,/clientes-service/v3/api-docs/**
+          filters:
+            - RewritePath=/clientes-service/(?<segment>.*), /$\{segment}
+
+        - id: pagos-service-openapi
+          uri: lb://pagos-service
+          predicates:
+            - Path=/pagos-service/v3/api-docs,/pagos-service/v3/api-docs/**
+          filters:
+            - RewritePath=/pagos-service/(?<segment>.*), /$\{segment}
+
+server:
+  port: ${GATEWAY_PORT:8080}
+
+eureka:
+  client:
+    service-url:
+      defaultZone: ${EUREKA_CLIENT_SERVICEURL_DEFAULTZONE:http://localhost:8761/eureka/}
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${server.port}
+
+springdoc:
+  api-docs:
+    enabled: true
+  swagger-ui:
+    path: /swagger-ui.html
+    disable-swagger-default-url: true
+    urls:
+      - name: clientes-service
+        url: /clientes-service/v3/api-docs
+      - name: pagos-service
+        url: /pagos-service/v3/api-docs
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: gateway,health,info
